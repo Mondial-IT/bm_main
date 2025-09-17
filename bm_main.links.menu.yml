@@ -1,0 +1,46 @@
+# Top-level Blue Marloc container under /admin
+bm_main.bluemarloc:
+  title: 'Blue Marloc'
+  description: 'Blue Marloc modules'
+  parent: system.admin
+  route_name: bm_main.section_overview
+  weight: 1
+
+
+
+# Sub-sections (each needs a route to be clickable/expandable)
+bm_main.bluemarloc_admin:
+  title: 'Administration'
+  description: 'Admin settings'
+  parent: bm_main.bluemarloc
+  route_name: bm_main.section_admin
+  weight: 1
+
+bm_main.bluemarloc_entity:
+  title: 'Entity'
+  description: 'Admin settings for entity modules'
+  parent: bm_main.bluemarloc
+  route_name: bm_main.section_entity
+  weight: 2
+
+bm_main.bluemarloc_data:
+  title: 'Data production'
+  description: 'Data production modules'
+  parent: bm_main.bluemarloc
+  route_name: bm_main.section_data
+  weight: 3
+
+bm_main.bluemarloc_manager:
+  title: 'Management'
+  description: 'Management modules'
+  parent: bm_main.bluemarloc
+  route_name: bm_main.section_manager
+  weight: 4
+
+# Your existing settings form lives under the Administration section
+bm_main.bm_main:
+  title: 'bm_main'
+  description: 'bm_main settings'
+  parent: bm_main.bluemarloc_admin
+  route_name: bm_main.settings_form
+  weight: 1

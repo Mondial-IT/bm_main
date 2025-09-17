@@ -1,0 +1,19 @@
+---
+label: 'Adding a new submenu to the Blue Marloc admin menu'
+related:
+- bm_main.overview
+- bm_debug_form_trace.overview
+---
+
+<h2>How to add a submenu</h2>
+<ol>
+  <li>Create a <code>.links.menu.yml</code> entry in your custom module with parent <code>bm_main.bluemarloc_admin</code>.</li>
+  <li>Provide a route in <code>.routing.yml</code> that points to your form or controller.</li>
+  <li>Clear caches with <code>drush cr</code>.</li>
+</ol>
+
+<h2>Tips</h2>
+<ul>
+  <li>Use <code>weight</code> to control order.</li>
+  <li>Pick the right subsection for clarity.</li>
+</ul>

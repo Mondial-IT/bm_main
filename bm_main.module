@@ -1,0 +1,38 @@
+<?php /** @noinspection PhpUnused */
+
+use Drupal\Core\Link;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Url;
+
+
+/**
+ * Implements hook_page_attachments().
+ */
+function bm_main_page_attachments(array &$attachments): void
+{
+  $route = Drupal::routeMatch()->getRouteObject();
+  if ($route && str_starts_with($route->getPath(), '/admin')) {
+    $attachments['#attached']['library'][] = 'bm_main/bm_main';
+  }
+}
+
+/**
+ * Implements hook_help().
+ */
+function bm_main_help($route_name): string
+{
+  if ($route_name == 'help.page.bm_main') {
+    $output = '<h2>' . t('Overview') . '</h2>';
+    $output .= '<p>' . t('The Blue Marloc Main module provides a unified entry point …') . '</p>';
+    $output .= '<h2>' . t('Related topics') . '</h2>';
+
+    $link = Link::fromTextAndUrl(
+      t('Help Topics overview'),
+      Url::fromRoute('help.main')
+    )->toString();
+
+    $output .= '<p>' . t('See the') . ' ' . $link . ' ' . t('for detailed how-to guides.') . '</p>';
+    return $output;
+  }
+  return '';
+}

@@ -1,0 +1,39 @@
+bm_main.section_overview:
+  path: '/admin/blue-marloc'
+  defaults:
+    _controller: '\Drupal\bm_main\Controller\AdminSectionController::overview'
+    _title: 'Blue Marloc'
+  requirements:
+    _permission: 'administer site configuration'
+
+bm_main.section_admin:
+  path: '/admin/blue-marloc/admin'
+  defaults:
+    _controller: '\Drupal\bm_main\Controller\AdminSectionController::admin'
+    _title: 'Blue Marloc — Administration'
+  requirements:
+    _permission: 'administer site configuration'
+
+bm_main.section_entity:
+  path: '/admin/blue-marloc/entity'
+  defaults:
+    _controller: '\Drupal\bm_main\Controller\AdminSectionController::entity'
+    _title: 'Blue Marloc — Entity'
+  requirements:
+    _permission: 'administer site configuration'
+
+bm_main.section_data:
+  path: '/admin/blue-marloc/data'
+  defaults:
+    _controller: '\Drupal\bm_main\Controller\AdminSectionController::data'
+    _title: 'Blue Marloc — Data production'
+  requirements:
+    _permission: 'administer site configuration'
+
+bm_main.section_manager:
+  path: '/admin/blue-marloc/manager'
+  defaults:
+    _controller: '\Drupal\bm_main\Controller\AdminSectionController::manager'
+    _title: 'Blue Marloc — Management'
+  requirements:
+    _permission: 'administer site configuration'
