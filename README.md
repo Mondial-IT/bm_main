@@ -1,6 +1,6 @@
 # bm_main
 
-Path: D:\Drupal_Dev\drupal11_vps01_lam_acc\docker_volume_app\git_root\web\modules\custom\bm_main
+Path: \modules\custom\bm_main
 
 ## Overview
   The **Blue Marloc Main** module provides a central entry point for
