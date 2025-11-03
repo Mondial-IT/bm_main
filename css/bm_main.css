@@ -1,5 +1,5 @@
 .toolbar-icon-bm-main-bluemarloc:before {
-  background-image: url("/sites/default/files/bm-logo.svg");
+  background-image: url("../assets/bm-logo.svg");
   background-size: 20px 20px;
   content: "";
 }

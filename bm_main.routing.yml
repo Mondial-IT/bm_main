@@ -37,3 +37,11 @@ bm_main.section_manager:
     _title: 'Blue Marloc — Management'
   requirements:
     _permission: 'administer site configuration'
+
+bm_main.section_developer:
+  path: '/admin/blue-marloc/developer'
+  defaults:
+    _controller: '\Drupal\bm_main\Controller\AdminSectionController::developer'
+    _title: 'Blue Marloc — Developer'
+  requirements:
+    _permission: 'administer site configuration'
