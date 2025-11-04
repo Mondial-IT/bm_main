@@ -3,3 +3,18 @@
   background-size: 20px 20px;
   content: "";
 }
+/* use as <code> ...
+   or as <pre class="code"><code> ...
+*/
+code,.code{
+  padding: .2em .4em;
+  margin: 0;
+  font-size: 85%;
+  white-space: break-spaces;
+  background-color: #818b981f;
+  border-radius: 6px;
+ }
+.code code{
+  background-color: transparent;
+  font-size:100%;
+}
