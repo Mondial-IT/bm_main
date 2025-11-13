@@ -1,4 +1,67 @@
 bm_main:
+  version: 1.x
   css:
     theme:
       css/bm_main.css: {}
+  js:
+    js/bm_main.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.ui.widget
+    - core/jquery.ui.controlgroup
+
+# Modernizes seven style elements -> d11 uses klaro needs be reviewed
+#theme_seven_modernizer:
+#  css:
+#    theme:
+#      css/bm-main-checkbox-style-seven.css: {}
+
+#    - ziston/tippyjs
+#    - ziston/bm_tippyjs
+#
+bm_node_table_select_template_form_interface:
+  version: 1.x
+  css:
+    theme:
+      css/BMNodeTableSelectTemplateFormInterface.css: {}
+  #    component:
+  # datatables moved to ziston_sub_bm libraries.
+  js:
+    js/BMNodeTableSelectTemplateFormInterface.js: {}
+  # datatables moved to ziston_sub_bm libraries.
+  dependencies:
+    - core/jquery
+    - bm_main/aggridjs
+    - bm_component/bm_component
+# moved to ziston_sub_bm libraries
+
+# datatablesjs is moved to ziston_sub_bm theme info yml and libraries.
+
+aggridjs:
+  remote: https://cdn.jsdelivr.net
+  version: 1.13.6
+  license:
+    name: MIT
+    url: /''
+    gpl-compatible: true
+  js:
+    js/bm_aggrid.js: {}
+    https://cdn.jsdelivr.net/npm/ag-grid-community/dist/ag-grid-community.min.noStyle.js: { type: external, minified: true }
+  css:
+    theme:
+      css/bm_aggrid.css: {}
+    component:
+      https://cdn.jsdelivr.net/npm/ag-grid-community/styles/ag-grid.css: { type: external, minified: true }
+      https://cdn.jsdelivr.net/npm/ag-grid-community/styles/ag-theme-quartz.css : { type: external, minified: true }
+  dependencies:
+    - core/jquery
+
+bm_main_sidebar_dialog_js:
+  js:
+    js/BMMainSidebarDialog.js: {}
+
+bm_main_file_upload_js:
+  js:
+    js/bm_main-file-upload.js: {}
+
+# tippyjs moved to ziston_sub_bm.libraries.yml

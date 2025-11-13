@@ -1,8 +1,16 @@
 <?php /** @noinspection PhpUnused */
 
+use Drupal\Component\Render\MarkupInterface;
+use Drupal\Core\Ajax\AjaxResponse;
+use Drupal\Core\Ajax\OpenModalDialogCommand;
+use Drupal\Core\File\FileSystemInterface;
+use Drupal\Core\Language\LanguageInterface;
 use Drupal\Core\Link;
-use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Render\Markup;
 use Drupal\Core\Url;
+use Drupal\file\Entity\File;
+use Drupal\Core\Menu\MenuTreeParameters;
+
 
 
 /**
@@ -10,10 +18,10 @@ use Drupal\Core\Url;
  */
 function bm_main_page_attachments(array &$attachments): void
 {
-  $route = Drupal::routeMatch()->getRouteObject();
-  if ($route && str_starts_with($route->getPath(), '/admin')) {
+  Drupal::routeMatch()->getRouteObject();
+  //if ($route && str_starts_with($route->getPath(), '/admin')) {
     $attachments['#attached']['library'][] = 'bm_main/bm_main';
-  }
+  //}
 }
 
 /**
@@ -35,4 +43,287 @@ function bm_main_help($route_name): string
     return $output;
   }
   return '';
+}
+
+/**
+ * # placing twigs in the module/templates
+ *
+ * @return array[]
+ */
+function bm_main_theme(): array {
+  $module_path = \Drupal::service('extension.path.resolver')
+    ->getPath('module', 'bm_main');
+
+  return [
+    'page__bm_main__xlsx_upload_form' => [
+      'variables' => [
+        'variable1' => NULL,
+        'variable2' => NULL,
+      ],
+      'template' => 'page--bm-main--xlsx-upload-form',
+      'path' => $module_path . '/templates',
+    ],
+  ];
+}
+
+/**
+ * Page callback: Returns the "Delete Cache Items" form.
+ */
+function bm_main_flush_bluemarloc_cache_form(): array {
+  // Get the cache backend service.
+  $cache_backend = Drupal::service('cache.backend');
+
+  // Create the "Delete Cache Items" form.
+  return Drupal::formBuilder()->getForm('Drupal\bm_main\BMCacheForm\BMCacheForm', $cache_backend);
+}
+
+/**
+ * **preprocess_node**
+ *
+ * Add $variables['language'] with current language to every node.
+ * use Drupal\Core\Language\LanguageManagerInterface;
+ */
+function bm_main_preprocess_node(&$variables, $hook): void {
+  $languageManager = Drupal::service('language_manager');
+  $currentLanguage = $languageManager->getCurrentLanguage();
+  $variables['language'] = $currentLanguage->getId();
+}
+
+function bm_main_get_current_language(): array {
+  $language_manager = Drupal::languageManager();
+  $content_langcode = $language_manager->getCurrentLanguage(LanguageInterface::TYPE_CONTENT)->getId();
+  $interface_langcode = $language_manager->getCurrentLanguage()->getId();
+  $url_langcode = $language_manager->getCurrentLanguage(LanguageInterface::TYPE_URL)->getId();
+  return array($content_langcode,$interface_langcode,$url_langcode);
+}
+/**
+ * Forms node table (aggrid) support
+ *
+ * When a form has an element 'ajax_table_select' then
+ * add into attributes a class 'bm-node-table-select-template-form'
+ *
+ * @param $variables
+ *
+ * @return void
+ */
+function bm_main_preprocess_form(&$variables): void {
+  // Check if this is the form you want to target.
+  if (isset($variables['element']['ajax_table_select'])) {
+    // Add a CSS class to the <form> element.
+    $variables['attributes']->addClass('bm-node-table-select-template-form');
+  }
+}
+
+/**
+ * bm_main_views_pre_render
+ *
+ * Attach `bm_main/bm_main_sidebar_dialog_js` library, based on `attach-bm-main-sidebar-dialog` class in the views definition.
+ *
+ * @param $view
+ *
+ * @return void
+ */
+function bm_main_views_pre_render($view): void {
+  $styleOptions = $view->display_handler->getOption('css_class');
+  if(!empty($styleOptions)) {
+    Drupal::logger('bm_main')
+      ->debug(__FUNCTION__ . ' viewId[' . $view->id() . '] having css_class[' .$styleOptions . '] see bm_main, attach library triggered by class on the view.');
+
+    // sidebar dialog, when css_class === attach-bm-main-sidebar-dialog
+    if (str_contains($styleOptions, 'attach-bm-main-sidebar-dialog')) {
+      $view->element['#attached']['library'][] = 'bm_main/bm_main_sidebar_dialog_js';
+    }
+    
+  }
+}
+
+
+/**
+ * this is an add-on to view administer content display listings-cm-admin
+ * it make the map field display in hybrid and zoomed to 18
+ *```
+ * name => string (0) ''
+ * ⇄lat => string (10) '40.6635707'
+ * ⇄lon => string (11) '-73.9211983'
+ * ⇄zoom => integer 18
+ * ⇄type => string (7) 'roadmap'
+ * ⇄width => string (4) '100%'
+ * ⇄height => string (5) '450px'
+ * ⇄show_marker => string (4) 'true'
+ * ⇄marker_icon => string (0) ''
+ * ⇄traffic => string (5) 'false'
+ * ⇄show_controls => string (4) 'true'
+ * ⇄infowindow => null
+ *```
+ * @param array $variables
+ *
+ * @return void
+ */
+function bm_main_preprocess_google_map_field(array &$variables): void {
+  $current_path = Drupal::service('path.current')->getPath();
+  if (str_contains($current_path, '/admin/content/listings-cm-admin')) {
+    if(isset($variables['zoom']))$variables['zoom'] = 18;
+    if(isset($variables['width']))$variables['width'] = '600px';
+    if(isset($variables['height']))$variables['height'] = '400px';
+    if(isset($variables['type']))$variables['type'] = 'hybrid';
+  }
+}
+
+/**
+ * universal title above panels with an icon and help text
+ * usage:
+ * #markup =>'<div class="panel">'.panel_title_and_help('Panel title', $helpMarkup),
+ * @param $title
+ * @param $helpText
+ *
+ * @return MarkupInterface|string
+ */
+function bm_main_panel_title_and_help($title, $helpText): MarkupInterface|string {
+  $icon='<i class="icon-bm-help"></i>';
+  $title=
+    '<div class="panel-title tippy">'.$title.' '.$icon.
+    '<div data-tippy>'.$helpText.'</div>
+        </div><hr>';
+  return Markup::create($title);
+}
+
+/**
+ * Display a title and help icon with help
+ * include in form markup
+ * @param $title
+ * @param $helpText
+ *
+ * @return MarkupInterface|string
+ */
+function bm_main_title_and_help($title, $helpText): MarkupInterface|string {
+  $icon='<i class="icon-bm-help"></i>';
+  $title=
+    '<span class="tippy">'.$title.' '.$icon.
+    '<span data-tippy>'.$helpText.'</span>
+    </span>';
+  return Markup::create($title);
+}
+
+/**
+ * Function get the last uploaded fid from the bm_main configuration.
+ * @see XlsxUploadForm for example
+ *
+ * @return int|null
+ *   The file ID (fid) if available, otherwise NULL.
+ */
+function bm_main_get_last_uploaded_fid(): ?int {
+  $config = Drupal::config('bm_main.settings');
+  $fid= $config->get('uploaded_file_fid') ?? NULL;
+  if(!is_numeric($fid)) {
+    return null;
+  }
+  return $fid;
+}
+
+function bm_main_get_last_uploaded_file_path(): ?string {
+  // Retrieve saved FID and file path.
+  $fid = bm_main_get_last_uploaded_fid();
+  $file = $fid ? File::load($fid) : NULL;
+  return $file?->getFileUri();
+}
+/**
+ * Prepares messages to display as a popup.
+ *
+ * @param AjaxResponse $response
+ */
+function bm_main_response_messages(AjaxResponse $response): void {
+  $noMessages = TRUE;
+
+  $message_markup = '<div id="status-messages">';
+  $message_markup .= '<div role="contentinfo" aria-label="Status message" class="messages messages--status">
+      <h2 class="visually-hidden">Status message</h2>
+      <ul class="messages__list">';
+
+  foreach (Drupal::messenger()->messagesByType('status') as $message) {
+    $noMessages = FALSE;
+    $message_markup .= '<li class="messages__item color-green">' . $message . '</li>';
+  }
+  foreach (Drupal::messenger()->messagesByType('warning') as $message) {
+    $noMessages = FALSE;
+    $message_markup .= '<li class="messages__item color-orange">' . $message . '</li>';
+  }
+  foreach (Drupal::messenger()->messagesByType('error') as $message) {
+    $noMessages = FALSE;
+    $message_markup .= '<li class="messages__item color-red">' . $message . '</li>';
+  }
+
+  $message_markup .= '</ul></div></div>';
+
+  // Clear messages once processed.
+  Drupal::messenger()->deleteByType('status');
+  Drupal::messenger()->deleteByType('error');
+  Drupal::messenger()->deleteByType('warning');
+
+  // Only open the modal if there are messages to display.
+  if (!$noMessages) {
+    $dialog_options = ['width' => 700, 'resizable' => TRUE];
+    $settings = ['sizeAdjustModal' => '#messages-modal'];
+    $response->addCommand(new OpenModalDialogCommand('Messages', $message_markup, $dialog_options, $settings));
+  }
+}
+
+function bm_main_log_apache_user(): void {
+  Drupal::logger('bm_main')->notice('Apache is running as: @user', ['@user' => get_current_user()]);
+
+  $temp_file = 'temporary://' . time() . '.txt';
+  $content = 'This is a test.';
+
+  try {
+    $directory='temporary://';
+    Drupal::service('file_system')->prepareDirectory($directory, FileSystemInterface::CREATE_DIRECTORY);
+    file_put_contents($temp_file, $content);
+    Drupal::logger('bm_main')->notice('File written successfully to @path', ['@path' => $temp_file]);
+  } catch (Exception $e) {
+    Drupal::logger('bm_main')->error('Failed to write file: @message', ['@message' => $e->getMessage()]);
+  }
+}
+
+
+/**
+ * Attach the speculation.js to menu items
+ * which does background loading of pages
+ * to give a faster page load for users.
+ */
+function bm_main_preprocess_menu(array &$variables)
+{
+  $menu_name = 'main'; // Change to your desired menu machine name
+
+  // Ensure we are targeting the correct menu
+  if ($variables['menu_name'] !== $menu_name) {
+    return;
+  }
+
+  // Load menu links dynamically
+  $menu_tree = \Drupal::service('menu.link_tree')->load($menu_name, new MenuTreeParameters());
+
+  $urls = [];
+  foreach ($menu_tree as $item) {
+    if ($item->link->isEnabled()) {
+      $url = $item->link->getUrlObject();
+      if ($url instanceof Url) {
+        $urls[] = $url->toString();
+      }
+    }
+  }
+
+  // Attach the speculation script only if links exist
+  if (!empty($urls)) {
+    $urls_json = json_encode($urls, JSON_UNESCAPED_SLASHES);
+
+    // Attach the speculation script to the menu's render array
+    $variables['#attached']['html_head'][] = [
+      [
+        '#type' => 'html_tag',
+        '#tag' => 'script',
+        '#attributes' => ['type' => 'speculationrules'],
+        '#value' => "{ \"prerender\": [ { \"urls\": $urls_json } ] }",
+      ],
+      'speculationrules_script'
+    ];
+  }
 }
