@@ -7,7 +7,8 @@ bm_main.bluemarloc:
   weight: 1
   options:
     _admin_route: TRUE
-# Sub-sections (each have a rout, see the controller as well)
+# Subsections (see the controller as well)
+# ADMIN
 bm_main.bluemarloc_admin:
   title: 'Administration'
   description: 'Admin settings'
@@ -16,7 +17,7 @@ bm_main.bluemarloc_admin:
   weight: 1
   options:
     _admin_route: TRUE
-
+# ENTITY
 bm_main.bluemarloc_entity:
   title: 'Entity'
   description: 'Admin settings for entity modules'
@@ -25,7 +26,7 @@ bm_main.bluemarloc_entity:
   weight: 2
   options:
     _admin_route: TRUE
-
+# DATA AND DATA PRODUCTION
 bm_main.bluemarloc_data:
   title: 'Data production'
   description: 'Data production modules'
@@ -34,26 +35,35 @@ bm_main.bluemarloc_data:
   weight: 3
   options:
     _admin_route: TRUE
-
+# USABILITY ENHANCEMENT MODULES
+bm_main.bluemarloc_enhancements:
+  title: 'Enhancements'
+  description: 'Enhancements and Functionalities modules'
+  parent: bm_main.bluemarloc
+  route_name: bm_main.section_enhancements
+  weight: 4
+  options:
+    _admin_route: TRUE
+# MANAGEMENT MODULES
 bm_main.bluemarloc_manager:
   title: 'Management'
   description: 'Management modules'
   parent: bm_main.bluemarloc
   route_name: bm_main.section_manager
-  weight: 4
+  weight: 5
   options:
     _admin_route: TRUE
-
+# DEVELOPER MODULES
 bm_main.bluemarloc_developer:
   title: 'Development'
   description: 'Development modules'
   parent: bm_main.bluemarloc
   route_name: bm_main.section_developer
-  weight: 5
+  weight: 6
   options:
     _admin_route: TRUE
 
-# Your existing settings form lives under the Administration section
+#
 bm_main.bm_main:
   title: 'bm_main'
   description: 'bm_main settings'

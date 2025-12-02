@@ -35,6 +35,10 @@ class AdminSectionController extends ControllerBase {
     return $this->sectionPage('bm_main.bluemarloc_data', $this->t('Data production'));
   }
 
+  public function enhancements(): array {
+    return $this->sectionPage('bm_main.bluemarloc_enhancements', $this->t('Enhancements'));
+  }
+
   public function manager(): array {
     return $this->sectionPage('bm_main.bluemarloc_manager', $this->t('Management'));
   }

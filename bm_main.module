@@ -7,6 +7,7 @@ use Drupal\Core\File\FileSystemInterface;
 use Drupal\Core\Language\LanguageInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Render\Markup;
+use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Url;
 use Drupal\file\Entity\File;
 use Drupal\Core\Menu\MenuTreeParameters;
@@ -27,19 +28,55 @@ function bm_main_page_attachments(array &$attachments): void
 /**
  * Implements hook_help().
  */
-function bm_main_help($route_name): string
+function bm_main_help($route_name, RouteMatchInterface $route_match): string
 {
   if ($route_name == 'help.page.bm_main') {
-    $output = '<h2>' . t('Overview') . '</h2>';
-    $output .= '<p>' . t('The Blue Marloc Main module provides a unified entry point …') . '</p>';
-    $output .= '<h2>' . t('Related topics') . '</h2>';
+    $output = '<h2>' . t('Blue Marloc Main Module') . '</h2>';
+    $output .= '<p>' . t('Provides the shared admin navigation, base libraries, and cache utilities that every Blue Marloc sub-module relies on.') . '</p>';
+
+    $output .= '<h3>' . t('Menus') . '</h3><ul>';
+    $output .= '<li>' . t('<strong>Blue Marloc</strong> — top-level entry under Configuration » System that opens the overview page.') . '</li>';
+    $output .= '<li>' . t('<strong>Administration</strong> — section for operational modules.') . '</li>';
+    $output .= '<li>' . t('<strong>Entity</strong> — section for entity-level tooling.') . '</li>';
+    $output .= '<li>' . t('<strong>Data production</strong> — section for data/import/export tooling.') . '</li>';
+    $output .= '<li>' . t('<strong>Management</strong> — section focused on managerial dashboards.') . '</li>';
+    $output .= '<li>' . t('<strong>Development</strong> — section focused on developer utilities.') . '</li>';
+    $output .= '<li>' . t('<strong>bm_main</strong> — settings link under Administration when enabled.') . '</li>';
+    $output .= '</ul>';
+
+    $output .= '<h3>' . t('URIs') . '</h3><ul>';
+    $output .= '<li>' . t('<code>@uri</code> (<code>@route</code>) — Overview of all Blue Marloc sections.', [
+      '@uri' => '/admin/blue-marloc',
+      '@route' => 'bm_main.section_overview',
+    ]) . '</li>';
+    $output .= '<li>' . t('<code>@uri</code> (<code>@route</code>) — Administration section landing.', [
+      '@uri' => '/admin/blue-marloc/admin',
+      '@route' => 'bm_main.section_admin',
+    ]) . '</li>';
+    $output .= '<li>' . t('<code>@uri</code> (<code>@route</code>) — Entity tooling section.', [
+      '@uri' => '/admin/blue-marloc/entity',
+      '@route' => 'bm_main.section_entity',
+    ]) . '</li>';
+    $output .= '<li>' . t('<code>@uri</code> (<code>@route</code>) — Data production section.', [
+      '@uri' => '/admin/blue-marloc/data',
+      '@route' => 'bm_main.section_data',
+    ]) . '</li>';
+    $output .= '<li>' . t('<code>@uri</code> (<code>@route</code>) — Management section.', [
+      '@uri' => '/admin/blue-marloc/manager',
+      '@route' => 'bm_main.section_manager',
+    ]) . '</li>';
+    $output .= '<li>' . t('<code>@uri</code> (<code>@route</code>) — Developer tooling section.', [
+      '@uri' => '/admin/blue-marloc/developer',
+      '@route' => 'bm_main.section_developer',
+    ]) . '</li>';
+    $output .= '</ul>';
 
     $link = Link::fromTextAndUrl(
       t('Help Topics overview'),
       Url::fromRoute('help.main')
     )->toString();
 
-    $output .= '<p>' . t('See the') . ' ' . $link . ' ' . t('for detailed how-to guides.') . '</p>';
+    $output .= '<p>' . t('See the @link for detailed how-to guides.', ['@link' => $link]) . '</p>';
     return $output;
   }
   return '';

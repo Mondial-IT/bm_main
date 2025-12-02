@@ -1,4 +1,4 @@
-name: Main Module
+name: Blue Marloc Main Module
 type: module
 description: Blue Marloc - Mondial IT - Main module - offers the Blue Marloc menu and css, js shared code.
 core_version_requirement: ^10 || ^11
