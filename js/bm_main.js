@@ -1,9 +1,19 @@
 /*
- * Copyright (c) Mondial-IT BV - Blue Marloc 2024 2025
+ * Copyright (c) Mondial-IT BV - Blue Marloc 2024
  *   Created on 2024-11-21 at 11:32:11
  */
 
-
+// this window.BM is the first element in the Blue Marloc stack
+// every other js will come after it.
+window.BM = {
+  info: 'bm_main provides central settings',
+  log: {
+    color1: 'background-color:#ad1ab9;color:white;',
+    color2: 'background-color:#1e8fff;color:white;',
+    textColor: 'color:#1e8fff;',
+  }
+}
+info = (s)=>{  console.log("%c bm_main: %c "+s,BM.log.color1, BM.log.color2); }
 info("window.BM installed");
 
 
