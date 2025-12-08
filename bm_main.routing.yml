@@ -53,3 +53,11 @@ bm_main.section_developer:
     _title: 'Blue Marloc — Developer'
   requirements:
     _permission: 'administer site configuration'
+
+bm_main.icons:
+  path: '/admin/blue-marloc/icons'
+  defaults:
+    _controller: '\Drupal\bm_main\Controller\IconGalleryController::index'
+    _title: 'Icon catalogue'
+  requirements:
+    _permission: 'administer site configuration'

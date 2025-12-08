@@ -65,3 +65,8 @@ bm_main_file_upload_js:
     js/bm_main-file-upload.js: {}
 
 # tippyjs moved to ziston_sub_bm.libraries.yml
+
+icons:
+  css:
+    theme:
+      css/icons.css: {}

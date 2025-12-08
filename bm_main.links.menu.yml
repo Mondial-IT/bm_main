@@ -63,6 +63,15 @@ bm_main.bluemarloc_developer:
   options:
     _admin_route: TRUE
 
+bm_main.icons_page:
+  title: 'Icon catalogue'
+  description: 'Preview the icon fonts provided by the site.'
+  parent: bm_main.bluemarloc_enhancements
+  route_name: bm_main.icons
+  weight: 20
+  options:
+    _admin_route: TRUE
+
 #
 bm_main.bm_main:
   title: 'bm_main'
