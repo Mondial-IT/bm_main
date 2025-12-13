@@ -131,7 +131,7 @@ class IconGalleryController extends ControllerBase {
       }
     }
 
-    $bm_main_css = DRUPAL_ROOT . '/modules/custom/bm_main/css/bm_main.css';
+    $bm_main_css = DRUPAL_ROOT . '/modules/custom/bm_main/css/bm-main.css';
     if (file_exists($bm_main_css)) {
       $results[$bm_main_css] = $bm_main_css;
     }

@@ -44,6 +44,14 @@ bm_main.bluemarloc_enhancements:
   weight: 4
   options:
     _admin_route: TRUE
+bm_main.bluemarloc_enhancements_theme:
+  title: 'Themes'
+  description: 'Theme Enhancements and Functionalities modules'
+  parent: bm_main.bluemarloc_enhancements
+  route_name: bm_main.section_enhancements_theme
+  weight: 1
+  options:
+    _admin_route: TRUE
 # MANAGEMENT MODULES
 bm_main.bluemarloc_manager:
   title: 'Management'
@@ -63,15 +71,14 @@ bm_main.bluemarloc_developer:
   options:
     _admin_route: TRUE
 
-bm_main.icons_page:
-  title: 'Icon catalogue'
-  description: 'Preview the icon fonts provided by the site.'
-  parent: bm_main.bluemarloc_enhancements
-  route_name: bm_main.icons
-  weight: 20
+bm_main.bluemarloc_developer_tools:
+  title: 'Reports'
+  description: 'Development reports'
+  parent: bm_main.bluemarloc_developer
+  route_name: bm_main.section_developer_tools
+  weight: 2
   options:
     _admin_route: TRUE
-
 #
 bm_main.bm_main:
   title: 'bm_main'
@@ -81,3 +88,13 @@ bm_main.bm_main:
   weight: 1
   options:
     _admin_route: TRUE
+# bm_main provides this function of discovery of icon files and making a display for it.
+bm_main.icons_page:
+  title: 'Icon catalogue'
+  description: 'Preview the icon fonts provided by the site.'
+  parent: bm_main.bluemarloc_enhancements
+  route_name: bm_main.icons
+  weight: 20
+  options:
+    _admin_route: TRUE
+#

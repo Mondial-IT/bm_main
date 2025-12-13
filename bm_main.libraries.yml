@@ -2,7 +2,12 @@ bm_main:
   version: 1.x
   css:
     theme:
-      css/bm_main.css: {}
+# module specific
+      css/bm-main.css: {}
+# general styling through adding css classes
+      css/bm-main-style-as-class.css: {}
+# theme alterations
+      css/bm-main-admin-theme.css: {}
   js:
     js/bm_main.js: {}
   dependencies:

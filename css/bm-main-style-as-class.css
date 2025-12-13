@@ -1,0 +1,275 @@
+/**
+ *
+ */
+:root {
+  --bm-bluemarloc-blue: #139ad0;
+  --ziston-theme-color: #139ad0!important;
+  --bm-bluemarloc-blue-background: #f1f9ff;
+  --bm-bluemarloc-purple: #7c30b9;
+  --bm-bluemarloc-purple-background: rgb(173, 26, 185, 5%);
+
+  --bm-blue: #139ad0;
+  --bm-navy: #3F99F1;
+  --bm-cyan: #0dcaf0;
+  --bm-purple: #7c30b9;
+  --bm-blueviolet: blueviolet;
+  --bm-violet: violet;
+  --bm-darkturquoise: darkturquoise;
+  --bm-green: #198754;
+  --bm-lightgreen: lightgreen;
+  --bm-teal: #20c997;
+  --bm-indigo: #6610f2;
+  --bm-pink: #d63384;
+  --bm-lightpink: color-mix(in srgb, #d63384 20%, white);
+  --bm-red: #dc3545;
+  --bm-orange: #fd7e14;
+  --bm-yellow: #ffc107;
+  --bm-white: #fff;
+  --bm-gray: #6c757d;
+  --bm-gray-dark: #343a40;
+  --bm-light: #d4d8db;
+  --bm-dark: #212529;
+  --bm-gradient: linear-gradient(90deg, #ad1ab9, var(--bm-bluemarloc-blue));
+  --bm-gradient-background: linear-gradient(30deg, var(--bm-bluemarloc-blue-background), var(--bm-bluemarloc-blue-background), var(--bm-bluemarloc-blue-background), var(--bm-bluemarloc-purple-background));
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bm-bluemarloc-blue: #5bb7f5;
+    --ziston-theme-color: #5bb7f5!important;
+    --bm-bluemarloc-blue-background: #14202b;
+    --bm-bluemarloc-purple: #c691ff;
+    --bm-bluemarloc-purple-background: rgba(198, 145, 255, 0.15);
+    --bm-blue: #5bb7f5;
+    --bm-navy: #7cb5ff;
+    --bm-cyan: #5ddcef;
+    --bm-purple: #c691ff;
+    --bm-blueviolet: #c084fc;
+    --bm-violet: #d6a4ff;
+    --bm-darkturquoise: #4fd2d2;
+    --bm-green: #4ade80;
+    --bm-lightgreen: #86efac;
+    --bm-teal: #5eead4;
+    --bm-indigo: #a78bfa;
+    --bm-pink: #f472b6;
+    --bm-lightpink: color-mix(in srgb, #f472b6 30%, white);
+    --bm-red: #f87373;
+    --bm-orange: #fdba74;
+    --bm-yellow: #fde047;
+    --bm-white: #f8fafc;
+    --bm-gray: #94a3b8;
+    --bm-gray-dark: #475569;
+    --bm-light: #1f2937;
+    --bm-dark: #0f172a;
+    --bm-gradient: linear-gradient(90deg, #c691ff, var(--bm-bluemarloc-blue));
+    --bm-gradient-background: linear-gradient(45deg, #121212, #232426) !important;;
+  }
+}
+
+.colorful {
+  background: linear-gradient(90deg, var(--bm-bluemarloc-purple), var(--bm-bluemarloc-blue)) !important;
+  background-size: 400% 400% !important;
+  -webkit-animation: AnimationName 4s ease infinite;
+  -moz-animation: AnimationName 4s ease infinite;
+  animation: AnimationName 4s ease infinite;
+}
+
+.colorful.fadeout {
+  -webkit-animation: AnimationName 4s ease;
+  -moz-animation: AnimationName 4s ease;
+  animation: AnimationName 4s ease;
+}
+
+.faded-colorful {
+  background: linear-gradient(90deg, rgba(173, 26, 185, 0.04), rgba(30, 143, 255, 0.15)) !important;
+}
+/** COLORS
+    colors of icons (en markers in leaflet)
+    must match with field_term_color in taxonomies
+*/
+.fgcolor-lightpink, .fgcolor-light-pink {
+  color: var(--bm-pink);
+}
+.bgcolor-black {
+  background-color: black;
+}
+.bgcolor-light-pink, .bgcolor-lightpink, .gva-icon-map.bgcolor-light-pink .pin-st0, .gva-icon-map.bgcolor-light-pink .pin-st1, .gva-icon-map.bgcolor-lightpink .pin-st0, .gva-icon-map.bgcolor-lightpink .pin-st1 {
+  background-color: var(--bm-lightpink) !important;
+  fill: var(--bm-lightpink);
+}
+
+.fgcolor-violet {
+  color: var(--bm-blueviolet);
+}
+
+.bgcolor-violet, .gva-icon-map.bgcolor-violet .pin-st0, .gva-icon-map.bgcolor-violet .pin-st1 {
+  background-color: var(--bm-blueviolet) !important;
+  fill: var(--bm-blueviolet);
+}
+
+.fgcolor-lightviolet {
+  color: var(--bm-violet);
+}
+
+.bgcolor-lightviolet, .gva-icon-map.bgcolor-lightviolet .pin-st0, .gva-icon-map.bgcolor-lightviolet .pin-st1 {
+  background-color: var(--bm-violet) !important;
+  fill: var(--bm-violet);
+}
+
+.fgcolor-green {
+  color: var(--bm-green);
+}
+
+.bgcolor-green, .gva-icon-map.bgcolor-green .pin-st0, .gva-icon-map.bgcolor-green .pin-st1 {
+  background-color: var(--bm-green) !important;
+  fill: var(--bm-green);
+}
+
+.fgcolor-dark-mint {
+  color: var(--bm-darkturquoise);
+}
+
+.bgcolor-dark-mint, .gva-icon-map.bgcolor-dark-mint .pin-st0, .gva-icon-map.bgcolor-dark-mint .pin-st1 {
+  background-color: var(--bm-darkturquoise) !important;
+  fill: var(--bm-darkturquoise);
+}
+
+.fgcolor-lightgreen {
+  color: var(--bm-lightgreen);
+}
+
+.bgcolor-lightgreen, .gva-icon-map.bgcolor-lightgreen .pin-st0, .gva-icon-map.bgcolor-lightgreen .pin-st1 {
+  background-color: var(--bm-lightgreen) !important;
+  fill: var(--bm-lightgreen);
+}
+
+.bgcolor-blue {
+  background: var(--bm-bluemarloc-blue);
+}
+
+.bgcolor-lightblue {
+  background: var(--bm-bluemarloc-blue-background);
+}
+
+.fgcolor-blue {
+var(--ziston-theme-color); }
+
+.bgcolor-blue, .gva-icon-map.bgcolor-blue .pin-st0, .gva-icon-map.bgcolor-blue .pin-st1 {
+  background-color: var(--bm-bluemarloc-blue) !important;
+  fill: var(--bm-bluemarloc-blue);
+}
+
+.fgcolor-red {
+  color: var(--bm-red);
+}
+
+.bgcolor-red, .gva-icon-map.bgcolor-red .pin-st0, .gva-icon-map.bgcolor-red .pin-st1 {
+  background-color: var(--bm-red) !important;
+  fill: var(--bm-red);
+}
+
+.fgcolor-orange {
+  color: var(--bm-orange);
+}
+
+.bgcolor-orange, .gva-icon-map.bgcolor-orange .pin-st0, .gva-icon-map.bgcolor-orange .pin-st1 {
+  background-color: var(--bm-orange) !important;
+  fill: var(--bm-orange);
+}
+
+.fgcolor-yellow {
+  color: var(--bm-yellow);
+}
+
+.bgcolor-yellow, .gva-icon-map.bgcolor-yellow .pin-st0, .gva-icon-map.bgcolor-yellow .pin-st1 {
+  background-color: var(--bm-yellow) !important;
+  fill: var(--bm-yellow);
+}
+
+.fgcolor-grey {
+  color: grey;
+}
+
+.bgcolor-grey, .gva-icon-map.bgcolor-grey .pin-st0, .gva-icon-map.bgcolor-grey .pin-st1 {
+  background-color: grey !important;
+  fill: grey;
+}
+
+.bgcolor-white {
+  background: white;
+}
+.fgcolor-white {
+  color: white;
+}
+.fgcolor-lightgrey {
+  color: lightgrey;
+}
+
+.bgcolor-lightgrey, .gva-icon-map.bgcolor-lightgrey .pin-st0, .gva-icon-map.bgcolor-lightgrey .pin-st1 {
+  background-color: lightgrey !important;
+  fill: lightgrey;
+}
+
+.fgcolor-purple {
+  color: var(--bm-purple);
+}
+
+.bgcolor-purple, .gva-icon-map.bgcolor-purple .pin-st0, .gva-icon-map.bgcolor-purple .pin-st1 {
+  background-color: var(--bm-purple) !important;
+  fill: var(--bm-purple);
+}
+
+.fgcolor-navy {
+  color: var(--bm-navy);
+}
+
+.bgcolor-navy, .gva-icon-map.bgcolor-navy .pin-st0, .gva-icon-map.bgcolor-navy .pin-st1 {
+  background-color: var(--bm-navy) !important;
+  fill: var(--bm-navy);
+}
+/* font is usually grey */
+.blackroboto{
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color:black;
+}
+
+/**
+  display divs as two columns.
+ */
+.grid-key-value {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 0fr 300px;
+}
+.displayflex {
+  display: flex;
+  gap: 20px;
+}
+/* Two colum equal width*/
+.grid-fr-fr {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+.grid-fr-fr-fr {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-bottom: 20px;
+}
+.gap-20 {
+  gap: 20px;
+}
+/* Floating elements */
+.floatleft {
+  float: left;
+}
+
+.floatright {
+  float: right;
+}
+
+.display-grid-space-between {
+  display: grid;
+  align-content: space-between;
+}

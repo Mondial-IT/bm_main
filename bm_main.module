@@ -9,6 +9,7 @@ use Drupal\Core\Link;
 use Drupal\Core\Render\Markup;
 use Drupal\Core\Routing\RouteMatchInterface;
 use Drupal\Core\Url;
+use Drupal\Component\Utility\Html;
 use Drupal\file\Entity\File;
 use Drupal\Core\Menu\MenuTreeParameters;
 
@@ -371,4 +372,81 @@ function bm_main_preprocess_menu(array &$variables)
       'speculationrules_script'
     ];
   }
+}
+
+/**
+ * General purpose function to retrieve and sanitize URL arguments.
+ *
+ * Example: $id = bm_main_get_url_arguments(['id'], ['numeric'])['id'];
+ *
+ * @param string[] $names
+ *   Names of query parameters.
+ * @param string[] $types_numeric_or_string
+ *   Expected types (numeric|string) matching the order of $names.
+ *
+ * @return array<int|string,bool>
+ *   Sanitized values keyed by name.
+ */
+function bm_main_get_url_arguments(array $names, array $types_numeric_or_string): array {
+  $ret = [];
+  $request = \Drupal::requestStack()->getCurrentRequest();
+
+  foreach ($names as $idx => $name) {
+    $raw = $request->query->get($name);
+    if ($raw === NULL) {
+      $ret[$name] = '';
+      continue;
+    }
+
+    $arg = Html::escape((string) $raw);
+    $arg = Html::decodeEntities($arg);
+
+    if ($arg !== '' && $arg !== ' ') {
+      $arg = trim(preg_replace('/[^a-zA-Z0-9\s]/', '', $arg));
+      $expected = $types_numeric_or_string[$idx] ?? 'string';
+      if ($expected === 'numeric' && is_numeric((int) $arg)) {
+        $ret[$name] = (int) $arg;
+      }
+      else {
+        $ret[$name] = $arg;
+      }
+    }
+    else {
+      $ret[$name] = FALSE;
+    }
+  }
+
+  return $ret;
+}
+
+/**
+ * Parse strings like "category=22&canvas=101" into key/value pairs.
+ *
+ * @param string $queryString
+ *   Query-like string.
+ *
+ * @return array<string,int|string>
+ *   Parsed key/value pairs (numeric where possible).
+ */
+function bm_main_parse_string_arguments(string $queryString): array {
+  parse_str($queryString, $queryArray);
+  $result = [];
+  foreach ($queryArray as $key => $value) {
+    preg_match('/(\w+)\=(\d+)/', "$key=$value", $matches);
+    if (count($matches) === 3) {
+      $result[$matches[1]] = (int) $matches[2];
+    }
+  }
+
+  // Less strict parsing to preserve string values when needed.
+  $resultLoose = [];
+  $array = explode("&", $queryString);
+  foreach ($array as $value) {
+    $keyVal = explode("=", $value);
+    if (count($keyVal) === 2) {
+      $resultLoose[trim($keyVal[0])] = trim($keyVal[1]);
+    }
+  }
+
+  return !empty($resultLoose) ? $resultLoose : $result;
 }

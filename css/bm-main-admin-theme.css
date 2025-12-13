@@ -1,0 +1,81 @@
+/* on help pages of modules */
+.help-page-table td {
+  vertical-align: top;
+  padding: 20px;
+}
+
+[data-drupal-selector="edit-table-select"] > thead th {
+  background-color: initial !important;
+  color: white !important;
+}
+
+/* ADMIN PAGES HEADING COLOR */
+
+.path-admin .content-header,
+[data-drupal-selector="edit-table-select"] > thead {
+  background: var(--bm-bluemarloc-blue-background);
+  background: var(--bm-gradient-background) !important;
+  background-size: 140% 400% !important;
+  -webkit-animation: AnimationName 4s ease infinite;
+  -moz-animation: AnimationName 4s ease infinite;
+  animation: AnimationName 4s ease infinite;
+  color: white;
+  font-family: Roboto, sans-serif;
+}
+
+/* ADMIN PAGES FONT */
+body.path-admin {
+  font-family: Roboto, sans-serif;
+}
+.path-admin .ui-dialog .ui-dialog-titlebar {
+  background: var(--bm-gradient-background) !important;
+}
+.path-admin .ui-dialog .ui-dialog-titlebar-close {
+  border-color: white;
+}
+/*
+  ADMIN THEME
+  MOVED THE ACTION BUTTON ON LISTING TO THE SIDE, TO REDUCE RISK OF DELETE ROWS BY CLICKING WRONG BUTTON
+*/
+[data-drupal-selector="edit-header"]:has([data-drupal-selector="edit-node-bulk-form"]) {
+  float: right;
+  background: var(--bm-bluemarloc-blue-background);
+  padding: 5px 10px;
+  label {
+    display: none;
+  }
+  [data-drupal-selector="edit-actions"] {
+    margin: 0;
+  }
+}
+
+[data-drupal-selector="edit-node-bulk-form"] {
+  display: flex;
+  gap: 10px;
+  align-content: stretch;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+}
+/**
+  AJAX MESSAGE COLORS
+ */
+.messages__item.color-orange {
+  background: white;
+  outline: 1px solid orange;
+  color: black;
+  padding: 10px;
+
+}
+.messages__item.color-red {
+  background: white;
+  outline: 1px solid red;
+  color: black;
+  padding: 10px;
+}
+
+tr.odd {background: white;}
+tbody tr:hover {
+  background: white;
+  outline: 1px solid rgb(138 204 255);
+}
