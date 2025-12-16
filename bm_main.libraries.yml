@@ -75,3 +75,29 @@ icons:
   css:
     theme:
       css/icons.css: {}
+
+datatablesjs:
+  remote: https://cdn.datatables.net
+  version: 2.3.4
+  license:
+    name: MIT
+    url: /''
+    gpl-compatible: true
+  js:
+    https://cdn.datatables.net/2.3.4/js/dataTables.min.js:
+      type: external
+      minified: true
+      attributes:
+        defer: true
+        crossorigin: anonymous
+    js/bm_main-datatables.js: {}
+  css:
+    theme:
+      https://cdn.datatables.net/2.3.4/css/dataTables.dataTables.min.css:
+        type: external
+        minified: true
+        attributes:
+          crossorigin: anonymous
+  dependencies:
+    - core/drupal
+    - core/jquery

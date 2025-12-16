@@ -3,7 +3,7 @@
  */
 :root {
   --bm-bluemarloc-blue: #139ad0;
-  --ziston-theme-color: #139ad0!important;
+  --ziston-theme-color: #139ad0 !important;
   --bm-bluemarloc-blue-background: #f1f9ff;
   --bm-bluemarloc-purple: #7c30b9;
   --bm-bluemarloc-purple-background: rgb(173, 26, 185, 5%);
@@ -29,14 +29,27 @@
   --bm-gray-dark: #343a40;
   --bm-light: #d4d8db;
   --bm-dark: #212529;
-  --bm-gradient: linear-gradient(90deg, #ad1ab9, var(--bm-bluemarloc-blue));
-  --bm-gradient-background: linear-gradient(30deg, var(--bm-bluemarloc-blue-background), var(--bm-bluemarloc-blue-background), var(--bm-bluemarloc-blue-background), var(--bm-bluemarloc-purple-background));
+  --bm-gradient: linear-gradient(90deg, var(--bm-bluemarloc-blue), var(--bm-bluemarloc-purple));
+  --bm-gradient-background: linear-gradient(30deg, var(--bm-bluemarloc-blue), var(--bm-bluemarloc-blue), var(--bm-bluemarloc-blue), var(--bm-bluemarloc-purple));
+
+
+}
+.main-page{
+  background:var(--bm-background-tertiary);
+}
+
+.panel3D {
+  background: var(--bm-background-secondary);
+  color: var(--bm-color-primary);
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: var(--bm-box-shadow-primary);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --bm-bluemarloc-blue: #5bb7f5;
-    --ziston-theme-color: #5bb7f5!important;
+    --ziston-theme-color: #5bb7f5 !important;
     --bm-bluemarloc-blue-background: #14202b;
     --bm-bluemarloc-purple: #c691ff;
     --bm-bluemarloc-purple-background: rgba(198, 145, 255, 0.15);
@@ -61,7 +74,7 @@
     --bm-gray-dark: #475569;
     --bm-light: #1f2937;
     --bm-dark: #0f172a;
-    --bm-gradient: linear-gradient(90deg, #c691ff, var(--bm-bluemarloc-blue));
+    --bm-gradient: linear-gradient(90deg, var(--bm-bluemarloc-blue), var(--bm-bluemarloc-purple));
     --bm-gradient-background: linear-gradient(45deg, #121212, #232426) !important;;
   }
 }
@@ -83,6 +96,7 @@
 .faded-colorful {
   background: linear-gradient(90deg, rgba(173, 26, 185, 0.04), rgba(30, 143, 255, 0.15)) !important;
 }
+
 /** COLORS
     colors of icons (en markers in leaflet)
     must match with field_term_color in taxonomies
@@ -90,9 +104,11 @@
 .fgcolor-lightpink, .fgcolor-light-pink {
   color: var(--bm-pink);
 }
+
 .bgcolor-black {
   background-color: black;
 }
+
 .bgcolor-light-pink, .bgcolor-lightpink, .gva-icon-map.bgcolor-light-pink .pin-st0, .gva-icon-map.bgcolor-light-pink .pin-st1, .gva-icon-map.bgcolor-lightpink .pin-st0, .gva-icon-map.bgcolor-lightpink .pin-st1 {
   background-color: var(--bm-lightpink) !important;
   fill: var(--bm-lightpink);
@@ -152,7 +168,8 @@
 }
 
 .fgcolor-blue {
-var(--ziston-theme-color); }
+var(--ziston-theme-color);
+}
 
 .bgcolor-blue, .gva-icon-map.bgcolor-blue .pin-st0, .gva-icon-map.bgcolor-blue .pin-st1 {
   background-color: var(--bm-bluemarloc-blue) !important;
@@ -198,9 +215,11 @@ var(--ziston-theme-color); }
 .bgcolor-white {
   background: white;
 }
+
 .fgcolor-white {
   color: white;
 }
+
 .fgcolor-lightgrey {
   color: lightgrey;
 }
@@ -227,10 +246,11 @@ var(--ziston-theme-color); }
   background-color: var(--bm-navy) !important;
   fill: var(--bm-navy);
 }
+
 /* font is usually grey */
-.blackroboto{
+.blackroboto {
   font-family: Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color:black;
+  color: black;
 }
 
 /**
@@ -241,10 +261,12 @@ var(--ziston-theme-color); }
   gap: 20px;
   grid-template-columns: 0fr 300px;
 }
+
 .displayflex {
   display: flex;
   gap: 20px;
 }
+
 /* Two colum equal width*/
 .grid-fr-fr {
   display: grid;
@@ -252,14 +274,17 @@ var(--ziston-theme-color); }
   margin-bottom: 20px;
   gap: 20px;
 }
+
 .grid-fr-fr-fr {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   margin-bottom: 20px;
 }
+
 .gap-20 {
   gap: 20px;
 }
+
 /* Floating elements */
 .floatleft {
   float: left;

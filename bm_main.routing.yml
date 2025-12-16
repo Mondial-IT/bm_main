@@ -38,6 +38,14 @@ bm_main.section_enhancements:
   requirements:
     _permission: 'administer site configuration'
 
+bm_main.section_enhancements_theme:
+  path: '/admin/blue-marloc/enhancements/theme'
+  defaults:
+    _controller: '\Drupal\bm_main\Controller\AdminSectionController::enhancements'
+    _title: 'Blue Marloc — Enhancements: Theme'
+  requirements:
+    _permission: 'administer site configuration'
+
 bm_main.section_manager:
   path: '/admin/blue-marloc/manager'
   defaults:
@@ -54,10 +62,26 @@ bm_main.section_developer:
   requirements:
     _permission: 'administer site configuration'
 
+bm_main.section_developer_tools:
+  path: '/admin/blue-marloc/developer/tools'
+  defaults:
+    _controller: '\Drupal\bm_main\Controller\AdminSectionController::developer'
+    _title: 'Blue Marloc — Developer tools'
+  requirements:
+    _permission: 'administer site configuration'
+
 bm_main.icons:
   path: '/admin/blue-marloc/icons'
   defaults:
     _controller: '\Drupal\bm_main\Controller\IconGalleryController::index'
     _title: 'Icon catalogue'
+  requirements:
+    _permission: 'administer site configuration'
+
+bm_main.settings_form:
+  path: '/admin/blue-marloc/settings'
+  defaults:
+    _form: '\Drupal\bm_main\Form\BmMainSettingsForm'
+    _title: 'bm_main settings'
   requirements:
     _permission: 'administer site configuration'

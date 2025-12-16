@@ -13,8 +13,7 @@
 
 .path-admin .content-header,
 [data-drupal-selector="edit-table-select"] > thead {
-  background: var(--bm-bluemarloc-blue-background);
-  background: var(--bm-gradient-background) !important;
+  background: var(--bm-gradient);
   background-size: 140% 400% !important;
   -webkit-animation: AnimationName 4s ease infinite;
   -moz-animation: AnimationName 4s ease infinite;
@@ -25,7 +24,6 @@
 
 /* ADMIN PAGES FONT */
 body.path-admin {
-  font-family: Roboto, sans-serif;
 }
 .path-admin .ui-dialog .ui-dialog-titlebar {
   background: var(--bm-gradient-background) !important;

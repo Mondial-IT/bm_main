@@ -4,6 +4,23 @@
    Created on 2024-11-21 at 11:32:11
  */
 
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+
+:root {
+  --bm-font-base: 'DM Sans', system-ui, -apple-system, sans-serif;
+  --bm-font-regular: 500;
+  --bm-font-strong: 600;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+  font-family: var(--bm-font-base);
+  font-weight: var(--bm-font-regular);
+}
+
 .toolbar-icon-bm-main-bluemarloc:before {
   background-image: url("../assets/bm-logo.svg");
   background-size: 20px 20px;
@@ -19,7 +36,7 @@ code,.code{
   white-space: break-spaces;
   background-color: #818b981f;
   border-radius: 6px;
- }
+}
 .code code{
   background-color: transparent;
   font-size:100%;
@@ -76,7 +93,7 @@ code,.code{
   animation: pulseScale 1s ease;
 }
 
-/* Define keyframes for the animation */
+/* Define keyframes for the animation
 input.button {
   background: linear-gradient(270deg, var(--bm-bluemarloc-purple), var(--bm-bluemarloc-blue));
   background-size: 400% 400%;
@@ -86,7 +103,7 @@ input.button {
   -o-animation: AnimationShift 30s ease infinite;
   animation: AnimationShift 30s ease infinite;
 }
-
+*/
 @-webkit-keyframes AnimationShift {
   0% {background-position: 0 54%}
   50% {background-position: 100% 47%}
