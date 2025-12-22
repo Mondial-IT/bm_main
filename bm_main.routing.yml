@@ -46,6 +46,14 @@ bm_main.section_enhancements_theme:
   requirements:
     _permission: 'administer site configuration'
 
+bm_main.section_enhancements_knowledge:
+  path: '/admin/blue-marloc/enhancements/knowledge'
+  defaults:
+    _controller: '\Drupal\bm_main\Controller\AdminSectionController::enhancements'
+    _title: 'Blue Marloc — Enhancements: Knowledge'
+  requirements:
+    _permission: 'administer site configuration'
+
 bm_main.section_manager:
   path: '/admin/blue-marloc/manager'
   defaults:

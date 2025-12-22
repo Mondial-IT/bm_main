@@ -160,6 +160,7 @@ function bm_main_preprocess_form(&$variables): void {
   }
 }
 
+
 /**
  * bm_main_views_pre_render
  *
@@ -179,7 +180,7 @@ function bm_main_views_pre_render($view): void {
     if (str_contains($styleOptions, 'attach-bm-main-sidebar-dialog')) {
       $view->element['#attached']['library'][] = 'bm_main/bm_main_sidebar_dialog_js';
     }
-    
+
   }
 }
 

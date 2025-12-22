@@ -7,6 +7,7 @@ Core Drupal 11 module that provides the shared admin navigation, base libraries,
 - Top-level “Blue Marloc” admin menu with sections for Administration, Entity, Data production, Management, Enhancements, and Development/Reports.
 - Shared libraries for admin UX, including sidebar dialog support and prerender (speculation rules) on the main menu.
 - Utility helpers: URL parsing, panel/help markup, last-uploaded file tracking, modal messenger rendering, language helper.
+- Admin menu overview UX enhancer (collapsible branches, quick filter, safer drag) on `/admin/structure/menu/manage/admin` via the bm_main menu_overview_enhance library.
 
 ### Technical Stack
 - Drupal 11 / PHP 8.3
@@ -23,6 +24,10 @@ Core Drupal 11 module that provides the shared admin navigation, base libraries,
 
 ### Usage
 - Place submenu items under the provided parents (e.g., `bm_main.bluemarloc_admin`, `bm_main.bluemarloc_entity`, `bm_main.bluemarloc_data`, `bm_main.bluemarloc_manager`, `bm_main.bluemarloc_enhancements`, `bm_main.bluemarloc_developer`, `bm_main.bluemarloc_developer_tools`).
+- Admin menu overview enhancements:
+  - Expand/Collapse all controls and per-branch toggles.
+  - Quick filter to highlight matching items; ancestors of matches stay visible.
+  - Drag handles are disabled on collapsed branches to avoid accidental moves.
 - Helpers:
   - `bm_main_get_url_arguments($names, $types)` — sanitized query args.
   - `bm_main_parse_string_arguments($queryString)` — parse key/value strings.

@@ -35,6 +35,7 @@ bm_main.bluemarloc_data:
   weight: 3
   options:
     _admin_route: TRUE
+
 # USABILITY ENHANCEMENT MODULES
 bm_main.bluemarloc_enhancements:
   title: 'Enhancements'
@@ -44,6 +45,7 @@ bm_main.bluemarloc_enhancements:
   weight: 4
   options:
     _admin_route: TRUE
+
 bm_main.bluemarloc_enhancements_theme:
   title: 'Themes'
   description: 'Theme Enhancements and Functionalities modules'
@@ -52,6 +54,17 @@ bm_main.bluemarloc_enhancements_theme:
   weight: 1
   options:
     _admin_route: TRUE
+
+# bm_knowledge_ai and bm_help_ai modules
+bm_main.bluemarloc_enhancements_knowledge:
+  title: 'Knowledge'
+  description: 'Knowledge management Enhancements and Functionalities modules'
+  parent: bm_main.bluemarloc_enhancements
+  route_name: bm_main.section_enhancements_knowledge
+  weight: 2
+  options:
+    _admin_route: TRUE
+
 # MANAGEMENT MODULES
 bm_main.bluemarloc_manager:
   title: 'Management'
