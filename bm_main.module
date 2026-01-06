@@ -20,10 +20,12 @@ use Drupal\Core\Menu\MenuTreeParameters;
  */
 function bm_main_page_attachments(array &$attachments): void
 {
-  Drupal::routeMatch()->getRouteObject();
-  //if ($route && str_starts_with($route->getPath(), '/admin')) {
+  $route = \Drupal::routeMatch()->getRouteObject();
+  if ($route && str_starts_with($route->getPath(), '/admin')) {
     $attachments['#attached']['library'][] = 'bm_main/bm_main';
-  //}
+    // Custom icon override for navigation link.
+    $attachments['#attached']['library'][] = 'bm_main/nav-icons';
+  }
 }
 
 /**
@@ -32,7 +34,7 @@ function bm_main_page_attachments(array &$attachments): void
 function bm_main_help($route_name, RouteMatchInterface $route_match): string
 {
   if ($route_name == 'help.page.bm_main') {
-    $output = '<h2>' . t('Blue Marloc Main Module') . '</h2>';
+    $output = '<h2>' . t('BM Main Module') . '</h2>';
     $output .= '<p>' . t('Provides the shared admin navigation, base libraries, and cache utilities that every Blue Marloc sub-module relies on.') . '</p>';
 
     $output .= '<h3>' . t('Menus') . '</h3><ul>';

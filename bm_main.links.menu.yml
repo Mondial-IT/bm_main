@@ -6,6 +6,11 @@ bm_main.bluemarloc:
   route_name: bm_main.section_overview
   weight: 1
   options:
+    icon:
+      pack_id: navigation
+      icon_id: pencil
+      settings:
+        class: 'toolbar-button__icon toolbar-button__icon--bm-main'
     _admin_route: TRUE
 # Subsections (see the controller as well)
 # ADMIN
@@ -16,8 +21,10 @@ bm_main.bluemarloc_admin:
   route_name: bm_main.section_admin
   weight: 1
   options:
-    _admin_route: TRUE
-# ENTITY
+    icon:
+      pack_id: bm_main
+      icon_id: bluemarloc
+    _admin_route: TRUE# ENTITY
 bm_main.bluemarloc_entity:
   title: 'Entity'
   description: 'Admin settings for entity modules'
@@ -25,7 +32,11 @@ bm_main.bluemarloc_entity:
   route_name: bm_main.section_entity
   weight: 2
   options:
+    icon:
+      pack_id: bm_main
+      icon_id: bluemarloc
     _admin_route: TRUE
+
 # DATA AND DATA PRODUCTION
 bm_main.bluemarloc_data:
   title: 'Data production'
@@ -34,6 +45,9 @@ bm_main.bluemarloc_data:
   route_name: bm_main.section_data
   weight: 3
   options:
+    icon:
+      pack_id: bm_main
+      icon_id: bluemarloc
     _admin_route: TRUE
 
 # USABILITY ENHANCEMENT MODULES
@@ -44,6 +58,9 @@ bm_main.bluemarloc_enhancements:
   route_name: bm_main.section_enhancements
   weight: 4
   options:
+    icon:
+      pack_id: bm_main
+      icon_id: bluemarloc
     _admin_route: TRUE
 
 bm_main.bluemarloc_enhancements_theme:
@@ -53,6 +70,9 @@ bm_main.bluemarloc_enhancements_theme:
   route_name: bm_main.section_enhancements_theme
   weight: 1
   options:
+    icon:
+      pack_id: bm_main
+      icon_id: bluemarloc
     _admin_route: TRUE
 
 # bm_knowledge_ai and bm_help_ai modules
@@ -63,8 +83,10 @@ bm_main.bluemarloc_enhancements_knowledge:
   route_name: bm_main.section_enhancements_knowledge
   weight: 2
   options:
+    icon:
+      pack_id: bm_main
+      icon_id: bluemarloc
     _admin_route: TRUE
-
 # MANAGEMENT MODULES
 bm_main.bluemarloc_manager:
   title: 'Management'
@@ -73,7 +95,11 @@ bm_main.bluemarloc_manager:
   route_name: bm_main.section_manager
   weight: 5
   options:
+    icon:
+      pack_id: bm_main
+      icon_id: bluemarloc
     _admin_route: TRUE
+
 # DEVELOPER MODULES
 bm_main.bluemarloc_developer:
   title: 'Development'
@@ -82,6 +108,9 @@ bm_main.bluemarloc_developer:
   route_name: bm_main.section_developer
   weight: 6
   options:
+    icon:
+      pack_id: bm_main
+      icon_id: bluemarloc
     _admin_route: TRUE
 
 bm_main.bluemarloc_developer_tools:
@@ -91,6 +120,9 @@ bm_main.bluemarloc_developer_tools:
   route_name: bm_main.section_developer_tools
   weight: 2
   options:
+    icon:
+      pack_id: bm_main
+      icon_id: bluemarloc
     _admin_route: TRUE
 #
 bm_main.bm_main:
@@ -100,8 +132,12 @@ bm_main.bm_main:
   route_name: bm_main.settings_form
   weight: 1
   options:
+    icon:
+      pack_id: bm_main
+      icon_id: bluemarloc
     _admin_route: TRUE
-# bm_main provides this function of discovery of icon files and making a display for it.
+
+# bm_main provides a page and discovery of icon files and making a display for it.
 bm_main.icons_page:
   title: 'Icon catalogue'
   description: 'Preview the icon fonts provided by the site.'
@@ -109,5 +145,8 @@ bm_main.icons_page:
   route_name: bm_main.icons
   weight: 20
   options:
+    icon:
+      pack_id: bm_main
+      icon_id: bluemarloc
     _admin_route: TRUE
 #

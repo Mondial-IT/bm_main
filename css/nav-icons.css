@@ -1,0 +1,8 @@
+.toolbar-button--icon--navigation-pencil .toolbar-button__icon--bm-main {
+  inline-size: 20px;
+  block-size: 20px;
+  background: center / contain no-repeat url("../assets/icons/bluemarloc.svg");
+  mask: none;
+  -webkit-mask: none;
+  border-radius: 4px;
+}
