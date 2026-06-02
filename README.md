@@ -31,8 +31,8 @@ Core Drupal 11 module that provides the shared admin navigation, base libraries,
 - Helpers:
   - `bm_main_get_url_arguments($names, $types)` — sanitized query args.
   - `bm_main_parse_string_arguments($queryString)` — parse key/value strings.
-  - `bm_main_panel_title_and_help()` / `bm_main_title_and_help()` — render title + tooltip help.
-  - `bm_main_get_last_uploaded_fid()` / `bm_main_get_last_uploaded_file_path()` — retrieve last stored upload.
+  - `bm_main_panel_title_and_help()` / `bm_main_title_and_help()` — render title + tooltip help (bm_tooltip-based).
+  - `bm_xlsx_get_last_uploaded_fid()` / `bm_xlsx_get_last_uploaded_file_path()` — retrieve last stored upload.
   - `bm_main_response_messages(AjaxResponse $response)` — push messenger messages into a modal.
   - `bm_main_get_current_language()` — array of content/interface/url langcodes.
 
@@ -73,4 +73,4 @@ $markup = bm_main_panel_title_and_help('Settings', 'Explain the section.');
 - Internal use by Mondial-IT / Blue Marloc (no public license declared).
 
 ### Maintainers / Contact
-- Blue Marloc / Mondial-IT engineering team (project tracker for issues). 
+- Blue Marloc / Mondial-IT engineering team (project tracker for issues).

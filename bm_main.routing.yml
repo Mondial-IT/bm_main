@@ -77,15 +77,15 @@ bm_main.section_developer_tools:
     _title: 'Blue Marloc — Developer tools'
   requirements:
     _permission: 'administer site configuration'
-
-bm_main.icons:
-  path: '/admin/blue-marloc/icons'
+# Demo's
+bm_main.section_demos:
+  path: '/admin/blue-marloc/demos'
   defaults:
-    _controller: '\Drupal\bm_main\Controller\IconGalleryController::index'
-    _title: 'Icon catalogue'
+    _controller: '\Drupal\bm_main\Controller\AdminSectionController::demos'
+    _title: 'Blue Marloc — Demos'
   requirements:
     _permission: 'administer site configuration'
-
+#
 bm_main.settings_form:
   path: '/admin/blue-marloc/settings'
   defaults:
@@ -93,3 +93,4 @@ bm_main.settings_form:
     _title: 'bm_main settings'
   requirements:
     _permission: 'administer site configuration'
+#

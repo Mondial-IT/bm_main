@@ -8,6 +8,7 @@ use Drupal\Core\Language\LanguageInterface;
 use Drupal\Core\Link;
 use Drupal\Core\Render\Markup;
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Template\Attribute;
 use Drupal\Core\Url;
 use Drupal\Component\Utility\Html;
 use Drupal\file\Entity\File;
@@ -25,6 +26,8 @@ function bm_main_page_attachments(array &$attachments): void
     $attachments['#attached']['library'][] = 'bm_main/bm_main';
     // Custom icon override for navigation link.
     $attachments['#attached']['library'][] = 'bm_main/nav-icons';
+    // Shared tooltip styling/behavior for help icons.
+    $attachments['#attached']['library'][] = 'bm_tooltip/tooltip';
   }
 }
 
@@ -85,34 +88,7 @@ function bm_main_help($route_name, RouteMatchInterface $route_match): string
   return '';
 }
 
-/**
- * # placing twigs in the module/templates
- *
- * @return array[]
- */
-function bm_main_theme(): array {
-  $module_path = \Drupal::service('extension.path.resolver')
-    ->getPath('module', 'bm_main');
 
-  return [
-    'page__bm_main__xlsx_upload_form' => [
-      'variables' => [
-        'variable1' => NULL,
-        'variable2' => NULL,
-      ],
-      'template' => 'page--bm-main--xlsx-upload-form',
-      'path' => $module_path . '/templates',
-    ],
-    'bm_main_icon_gallery' => [
-      'variables' => [
-        'icon_sets' => [],
-        'empty_message' => NULL,
-      ],
-      'template' => 'bm-main-icon-gallery',
-      'path' => $module_path . '/templates',
-    ],
-  ];
-}
 
 /**
  * Page callback: Returns the "Delete Cache Items" form.
@@ -228,12 +204,16 @@ function bm_main_preprocess_google_map_field(array &$variables): void {
  * @return MarkupInterface|string
  */
 function bm_main_panel_title_and_help($title, $helpText): MarkupInterface|string {
-  $icon='<i class="icon-bm-help"></i>';
-  $title=
-    '<div class="panel-title tippy">'.$title.' '.$icon.
-    '<div data-tippy>'.$helpText.'</div>
-        </div><hr>';
-  return Markup::create($title);
+  $icon = '<i class="icon-bm-help bm-tooltip" data-tooltip-selector="#rnd" aria-hidden="true"></i>';
+
+  // bm_tooltip implementation:
+  // <span class='tooltip' data-tooltip-selector='#tooltip-html-block' data-bm-tooltip-theme='brand'>HTML source tooltip</span>
+  //<div id='tooltip-html-block' data-tooltip><strong>Rich content</strong><br />This tooltip reads HTML from a linked div.</div>
+
+  $markup =  '<span>'.Html::escape((string) $title).$icon.'</span>';
+  $markup .= '<div id="rnd" data-tooltip>'.$helpText.'</div>';
+
+  return Markup::create($markup);
 }
 
 /**
@@ -245,35 +225,16 @@ function bm_main_panel_title_and_help($title, $helpText): MarkupInterface|string
  * @return MarkupInterface|string
  */
 function bm_main_title_and_help($title, $helpText): MarkupInterface|string {
-  $icon='<i class="icon-bm-help"></i>';
-  $title=
-    '<span class="tippy">'.$title.' '.$icon.
-    '<span data-tippy>'.$helpText.'</span>
-    </span>';
-  return Markup::create($title);
-}
 
-/**
- * Function get the last uploaded fid from the bm_main configuration.
- * @see XlsxUploadForm for example
- *
- * @return int|null
- *   The file ID (fid) if available, otherwise NULL.
- */
-function bm_main_get_last_uploaded_fid(): ?int {
-  $config = Drupal::config('bm_main.settings');
-  $fid= $config->get('uploaded_file_fid') ?? NULL;
-  if(!is_numeric($fid)) {
-    return null;
-  }
-  return $fid;
-}
+  $icon = '<i class="icon-bm-help bm-tooltip" data-tooltip-selector="#rnd" aria-hidden="true"></i>';
 
-function bm_main_get_last_uploaded_file_path(): ?string {
-  // Retrieve saved FID and file path.
-  $fid = bm_main_get_last_uploaded_fid();
-  $file = $fid ? File::load($fid) : NULL;
-  return $file?->getFileUri();
+  // bm_tooltip implementation:
+  // <span class='bm-tooltip bm-tooltip--right' data-bm-tooltip-content='Helpful hint about this field.' data-bm-tooltip-theme='light'>❔</span>
+
+  $markup =  '<span >'.Html::escape((string) $title).$icon.'</span>';
+  $markup .= '<div id="rnd" data-tooltip>'.$helpText.'</div>';
+
+  return Markup::create($markup);
 }
 /**
  * Prepares messages to display as a popup.

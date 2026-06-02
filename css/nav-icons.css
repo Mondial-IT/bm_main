@@ -1,8 +1,18 @@
-.toolbar-button--icon--navigation-pencil .toolbar-button__icon--bm-main {
-  inline-size: 20px;
-  block-size: 20px;
-  background: center / contain no-repeat url("../assets/icons/bluemarloc.svg");
-  mask: none;
-  -webkit-mask: none;
-  border-radius: 4px;
+.toolbar .toolbar-icon-bm_main_bluemarloc::before,
+.toolbar .toolbar-icon-bm_main_bluemarloc_admin::before,
+.toolbar .toolbar-icon-bm_main_bluemarloc_entity::before,
+.toolbar .toolbar-icon-bm_main_bluemarloc_data::before,
+.toolbar .toolbar-icon-bm_main_bluemarloc_enhancements::before,
+.toolbar .toolbar-icon-bm_main_bluemarloc_enhancements_theme::before,
+.toolbar .toolbar-icon-bm_main_bluemarloc_enhancements_knowledge::before,
+.toolbar .toolbar-icon-bm_main_bluemarloc_manager::before,
+.toolbar .toolbar-icon-bm_main_bluemarloc_developer::before,
+.toolbar .toolbar-icon-bm_main_bluemarloc_developer_tools::before,
+.toolbar .toolbar-icon-bm_main_bm_main::before {
+  --icon: url('../assets/icons/bm-admin-icon.svg');
+  background-image: var(--icon);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 1.25rem 1.25rem;
+  content: '';
 }

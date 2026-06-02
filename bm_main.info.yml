@@ -3,3 +3,5 @@ type: module
 description: Blue Marloc - Mondial IT - Main module - offers the Blue Marloc menu and css, js shared code.
 core_version_requirement: ^10 || ^11
 package: Blue Marloc
+dependencies:
+  - bm_tooltip

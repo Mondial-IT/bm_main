@@ -47,6 +47,9 @@ class AdminSectionController extends ControllerBase {
     return $this->sectionPage('bm_main.bluemarloc_developer', $this->t('Developer'));
   }
 
+  public function demos(): array {
+    return $this->sectionPage('bm_main.bluemarloc_demos', $this->t('Demo\'s'));
+  }
   /**
    * Generic renderer that lists child menu links of a given parent.
    */

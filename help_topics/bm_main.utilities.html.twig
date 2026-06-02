@@ -9,14 +9,14 @@ related:
   <li><code>bm_main_get_url_arguments($names, $types)</code> — sanitize query parameters as numeric/string.</li>
   <li><code>bm_main_parse_string_arguments($queryString)</code> — parse key/value strings (e.g., <code>foo=1&bar=2</code>).</li>
   <li><code>bm_main_get_current_language()</code> — returns content/interface/url langcodes.</li>
-  <li><code>bm_main_panel_title_and_help()</code> / <code>bm_main_title_and_help()</code> — render headings with Tippy help markup.</li>
-  <li><code>bm_main_get_last_uploaded_fid()</code> / <code>bm_main_get_last_uploaded_file_path()</code> — retrieve the last stored upload from config.</li>
+  <li><code>bm_main_panel_title_and_help()</code> / <code>bm_main_title_and_help()</code> — render headings with <code>bm_tooltip</code>-powered help.</li>
+  <li><code>bm_xlsx_get_last_uploaded_fid()</code> / <code>bm_xlsx_get_last_uploaded_file_path()</code> — retrieve the last stored upload from config.</li>
   <li><code>bm_main_response_messages(AjaxResponse)</code> — collect messenger output into a modal dialog.</li>
 </ul>
 
 <h2>Behaviors</h2>
 <ul>
-  <li><strong>Admin library attach</strong>: <code>bm_main_page_attachments()</code> attaches <code>bm_main/bm_main</code>.</li>
+  <li><strong>Admin library attach</strong>: <code>bm_main_page_attachments()</code> attaches <code>bm_main/bm_main</code>, <code>bm_main/nav-icons</code>, and <code>bm_tooltip/tooltip</code> on admin routes.</li>
   <li><strong>Speculation prerender</strong>: <code>bm_main_preprocess_menu()</code> injects <code>speculationrules</code> for the <code>main</code> menu.</li>
   <li><strong>Views dialog support</strong>: <code>bm_main_views_pre_render()</code> adds <code>bm_main/bm_main_sidebar_dialog_js</code> when the view CSS class includes <code>attach-bm-main-sidebar-dialog</code>.</li>
 </ul>

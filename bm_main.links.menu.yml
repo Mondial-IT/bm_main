@@ -4,11 +4,11 @@ bm_main.bluemarloc:
   description: 'Blue Marloc modules'
   parent: system.admin
   route_name: bm_main.section_overview
-  weight: 1
+  weight: -1
   options:
     icon:
-      pack_id: navigation
-      icon_id: pencil
+      pack_id: bm_main
+      icon_id: bm-admin-icon
       settings:
         class: 'toolbar-button__icon toolbar-button__icon--bm-main'
     _admin_route: TRUE
@@ -23,8 +23,12 @@ bm_main.bluemarloc_admin:
   options:
     icon:
       pack_id: bm_main
-      icon_id: bluemarloc
-    _admin_route: TRUE# ENTITY
+      icon_id: bm-admin-icon
+      settings:
+        class: 'toolbar-button__icon toolbar-button__icon--bm-main'
+    _admin_route: TRUE
+
+# ENTITY
 bm_main.bluemarloc_entity:
   title: 'Entity'
   description: 'Admin settings for entity modules'
@@ -34,8 +38,11 @@ bm_main.bluemarloc_entity:
   options:
     icon:
       pack_id: bm_main
-      icon_id: bluemarloc
+      icon_id: bm-admin-icon
+      settings:
+        class: 'toolbar-button__icon toolbar-button__icon--bm-main'
     _admin_route: TRUE
+
 
 # DATA AND DATA PRODUCTION
 bm_main.bluemarloc_data:
@@ -47,8 +54,11 @@ bm_main.bluemarloc_data:
   options:
     icon:
       pack_id: bm_main
-      icon_id: bluemarloc
+      icon_id: bm-admin-icon
+      settings:
+        class: 'toolbar-button__icon toolbar-button__icon--bm-main'
     _admin_route: TRUE
+
 
 # USABILITY ENHANCEMENT MODULES
 bm_main.bluemarloc_enhancements:
@@ -60,8 +70,11 @@ bm_main.bluemarloc_enhancements:
   options:
     icon:
       pack_id: bm_main
-      icon_id: bluemarloc
+      icon_id: bm-admin-icon
+      settings:
+        class: 'toolbar-button__icon toolbar-button__icon--bm-main'
     _admin_route: TRUE
+
 
 bm_main.bluemarloc_enhancements_theme:
   title: 'Themes'
@@ -72,21 +85,27 @@ bm_main.bluemarloc_enhancements_theme:
   options:
     icon:
       pack_id: bm_main
-      icon_id: bluemarloc
+      icon_id: bm-admin-icon
+      settings:
+        class: 'toolbar-button__icon toolbar-button__icon--bm-main'
     _admin_route: TRUE
 
+
 # bm_knowledge_ai and bm_help_ai modules
-bm_main.bluemarloc_enhancements_knowledge:
+bm_main.bluemarloc_knowledge:
   title: 'Knowledge'
   description: 'Knowledge management Enhancements and Functionalities modules'
-  parent: bm_main.bluemarloc_enhancements
+  parent: bm_main.bluemarloc
   route_name: bm_main.section_enhancements_knowledge
   weight: 2
   options:
     icon:
       pack_id: bm_main
-      icon_id: bluemarloc
+      icon_id: bm-admin-icon
+      settings:
+        class: 'toolbar-button__icon toolbar-button__icon--bm-main'
     _admin_route: TRUE
+
 # MANAGEMENT MODULES
 bm_main.bluemarloc_manager:
   title: 'Management'
@@ -97,8 +116,11 @@ bm_main.bluemarloc_manager:
   options:
     icon:
       pack_id: bm_main
-      icon_id: bluemarloc
+      icon_id: bm-admin-icon
+      settings:
+        class: 'toolbar-button__icon toolbar-button__icon--bm-main'
     _admin_route: TRUE
+
 
 # DEVELOPER MODULES
 bm_main.bluemarloc_developer:
@@ -110,8 +132,11 @@ bm_main.bluemarloc_developer:
   options:
     icon:
       pack_id: bm_main
-      icon_id: bluemarloc
+      icon_id: bm-admin-icon
+      settings:
+        class: 'toolbar-button__icon toolbar-button__icon--bm-main'
     _admin_route: TRUE
+
 
 bm_main.bluemarloc_developer_tools:
   title: 'Reports'
@@ -122,7 +147,38 @@ bm_main.bluemarloc_developer_tools:
   options:
     icon:
       pack_id: bm_main
-      icon_id: bluemarloc
+      icon_id: bm-admin-icon
+      settings:
+        class: 'toolbar-button__icon toolbar-button__icon--bm-main'
+    _admin_route: TRUE
+
+# DEMO's
+bm_main.bluemarloc_demos:
+  title: "Demos"
+  description: 'Demos'
+  parent: bm_main.bluemarloc
+  route_name: bm_main.section_demos
+  weight: 10
+  options:
+    icon:
+      pack_id: bm_main
+      icon_id: bm-admin-icon
+      settings:
+        class: 'toolbar-button__icon toolbar-button__icon--bm-main'
+    _admin_route: TRUE
+# DEMO reports
+bm_main.bluemarloc_demo_reports:
+  title: "Reports"
+  description: 'Reports'
+  parent: bm_main.bluemarloc_demos
+  route_name: bm_main.section_demos
+  weight: 10
+  options:
+    icon:
+      pack_id: bm_main
+      icon_id: bm-admin-icon
+      settings:
+        class: 'toolbar-button__icon toolbar-button__icon--bm-main'
     _admin_route: TRUE
 #
 bm_main.bm_main:
@@ -134,19 +190,7 @@ bm_main.bm_main:
   options:
     icon:
       pack_id: bm_main
-      icon_id: bluemarloc
+      icon_id: bm-admin-icon
+      settings:
+        class: 'toolbar-button__icon toolbar-button__icon--bm-main'
     _admin_route: TRUE
-
-# bm_main provides a page and discovery of icon files and making a display for it.
-bm_main.icons_page:
-  title: 'Icon catalogue'
-  description: 'Preview the icon fonts provided by the site.'
-  parent: bm_main.bluemarloc_enhancements
-  route_name: bm_main.icons
-  weight: 20
-  options:
-    icon:
-      pack_id: bm_main
-      icon_id: bluemarloc
-    _admin_route: TRUE
-#
